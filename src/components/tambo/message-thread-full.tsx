@@ -98,8 +98,13 @@ export const MessageThreadFull = React.forwardRef<
       {/* Thread History Sidebar - rendered first if history is on the left */}
       {historyPosition === "left" && threadHistorySidebar}
 
-      <ThreadContainer ref={mergedRef} className={className} {...props}>
-        <ScrollableMessageContainer className="p-4">
+      <ThreadContainer
+        ref={mergedRef}
+        className={`rounded-3xl bg-transparent text-white ${className ?? ""}`}
+        {...props}
+      >
+
+        <ScrollableMessageContainer className="p-4 bg-white/0">
           <ThreadContent variant={variant}>
             <ThreadContentMessages />
           </ThreadContent>
@@ -111,7 +116,7 @@ export const MessageThreadFull = React.forwardRef<
         </MessageSuggestions>
 
         {/* Message input */}
-        <div className="p-4">
+        <div className="p-4 border-t border-white/10 bg-white/5 backdrop-blur rounded-b-3xl">
           <MessageInput contextKey={contextKey}>
             <MessageInputTextarea />
             <MessageInputToolbar>

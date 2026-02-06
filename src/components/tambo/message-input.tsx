@@ -201,9 +201,10 @@ const MessageInput = React.forwardRef<HTMLFormElement, MessageInputProps>(
           data-slot="message-input-form"
           {...props}
         >
-          <div className="flex flex-col border border-gray-200 rounded-xl bg-background shadow-md p-2 px-3">
+          <div className="flex flex-col rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-2 px-3 shadow-none">
             {children}
           </div>
+
         </form>
       </MessageInputContext.Provider>
     );
@@ -262,8 +263,7 @@ const MessageInputTextarea = ({
       onChange={handleChange}
       onKeyDown={handleKeyDown}
       className={cn(
-        "flex-1 p-3 rounded-t-lg bg-background text-foreground resize-none text-sm min-h-[82px] max-h-[40vh] focus:outline-none placeholder:text-muted-foreground/50",
-        className,
+        "flex-1 p-3 rounded-t-xl bg-transparent text-white resize-none text-sm min-h-[82px] max-h-[40vh] focus:outline-none placeholder:text-white/45", className,
       )}
       disabled={isPending}
       placeholder={placeholder}
@@ -313,7 +313,7 @@ const MessageInputSubmitButton = React.forwardRef<
   };
 
   const buttonClasses = cn(
-    "w-10 h-10 bg-black/80 text-white rounded-lg hover:bg-black/70 disabled:opacity-50 flex items-center justify-center cursor-pointer",
+    "w-10 h-10 rounded-xl bg-white/10 text-white hover:bg-white/15 border border-white/10 disabled:opacity-50 flex items-center justify-center cursor-pointer",
     className,
   );
 

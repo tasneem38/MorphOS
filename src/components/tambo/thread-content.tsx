@@ -138,8 +138,7 @@ const ThreadContentMessages = React.forwardRef<
           <div
             key={
               message.id ??
-              `${message.role}-${
-                message.createdAt ?? Date.now()
+              `${message.role}-${message.createdAt ?? Date.now()
               }-${message.content?.toString().substring(0, 10)}`
             }
             data-slot="thread-content-item"
@@ -163,8 +162,8 @@ const ThreadContentMessages = React.forwardRef<
                 <MessageContent
                   className={
                     message.role === "assistant"
-                      ? "text-primary font-sans"
-                      : "text-primary bg-container hover:bg-backdrop font-sans"
+                      ? "text-white font-sans"
+                      : "text-white bg-container hover:bg-backdrop font-sans"
                   }
                 />
                 <ToolcallInfo />

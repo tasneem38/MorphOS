@@ -35,72 +35,36 @@
 }
 
 :root {
-  /* Default Tailwind CSS Variables customized with tambo colors */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.14 0 285);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.14 0 285);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.14 0 285);
-  --primary: oklch(0.31 0.02 281);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.54 0.027 261);
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.92 0 260);
-  --muted-foreground: oklch(0.73 0.022 260);
-  --accent: oklch(0.97 0 286);
-  --accent-foreground: oklch(0.21 0 286);
+  /* Default MorphOS Dark Theme Variables */
+  --background: #070A12;
+  --foreground: #FFFFFF;
+  --card: #0B1220;
+  --card-foreground: #FFFFFF;
+  --popover: #0B1220;
+  --popover-foreground: #FFFFFF;
+  --primary: #10b981;
+  --primary-foreground: #000000;
+  --secondary: rgba(255, 255, 255, 0.05);
+  --secondary-foreground: #FFFFFF;
+  --muted: rgba(255, 255, 255, 0.05);
+  --muted-foreground: rgba(255, 255, 255, 0.7);
+  --accent: rgba(255, 255, 255, 0.1);
+  --accent-foreground: #FFFFFF;
   --destructive: oklch(0.64 0.2 25);
-  --border: oklch(0.93 0 242);
-  --input: oklch(0.92 0 286);
-  --ring: oklch(0.14 0 285);
-  --chart-1: oklch(0.72 0.15 60);
-  --chart-2: oklch(0.62 0.2 6);
-  --chart-3: oklch(0.53 0.2 262);
-  --chart-4: oklch(0.7 0.13 165);
-  --chart-5: oklch(0.62 0.2 313);
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #10b981;
+  --chart-1: #10b981;
+  --chart-2: #22d3ee;
+  --chart-3: #a855f7;
+  --chart-4: #fbbf24;
+  --chart-5: #f87171;
 
-  /* Tambo Specific Variables needed for tambo components */
-  --container: oklch(0.98 0 247);
-  --backdrop: oklch(0.25 0.07 252 / 0.25);
-  --muted-backdrop: oklch(0.25 0.07 252 / 0.1);
-  --radius: 0.5rem;
-  --panel-left-width: 500px;
-  --panel-right-width: 500px;
-  --sidebar-width: 3rem;
-}
-
-.dark {
-  /* Dark Mode Tailwind CSS Variables customized with tambo colors */
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.72 0.15 60);
-  --chart-2: oklch(0.62 0.2 6);
-  --chart-3: oklch(0.53 0.2 262);
-  --chart-4: oklch(0.7 0.13 165);
-  --chart-5: oklch(0.62 0.2 313);
-
-  /* Tambo Specific Variables needed for tambo components */
-  --container: oklch(0.98 0 247);
-  --backdrop: oklch(0.25 0.07 252 / 0.25);
-  --muted-backdrop: oklch(0.25 0.07 252 / 0.1);
-  --radius: 0.5rem;
+  /* Tambo Specific Variables */
+  --container: rgba(255, 255, 255, 0.05);
+  --backdrop: rgba(7, 10, 18, 0.7);
+  --muted-backdrop: rgba(7, 10, 18, 0.4);
+  --radius: 0.75rem;
   --panel-left-width: 500px;
   --panel-right-width: 500px;
   --sidebar-width: 3rem;
@@ -110,8 +74,116 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     font-family: Arial, Helvetica, sans-serif;
   }
+}
+
+/* MorphOS dark chat overrides (safe, scoped by container background) */
+textarea {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  color: #FFFFFF !important;
+}
+
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Buttons / borders inside chat look better on dark */
+button,
+input,
+textarea {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+/* ---------- MorphOS Chat Theme Overrides (scoped) ---------- */
+.morphos-chat * {
+  color-scheme: dark;
+}
+
+/* Make the whole thread surface dark */
+.morphos-chat {
+  color: #FFFFFF;
+}
+
+/* Kill any forced white panels inside */
+.morphos-chat .bg-white {
+  background-color: transparent !important;
+}
+
+/* Input composer area (the big white block) */
+.morphos-chat textarea,
+.morphos-chat input[type="text"] {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+.morphos-chat textarea::placeholder,
+.morphos-chat input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Buttons */
+.morphos-chat button {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+/* Suggestion chips/cards */
+.morphos-chat a,
+.morphos-chat [role="button"],
+.morphos-chat button {
+  color: #FFFFFF;
+}
+
+/* Thread history sidebar: soften it */
+.morphos-chat aside,
+.morphos-chat [data-thread-history],
+.morphos-chat .thread-history {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Any card-like containers */
+.morphos-chat .shadow,
+.morphos-chat .shadow-sm,
+.morphos-chat .shadow-md {
+  box-shadow: none !important;
+}
+
+/* ---------- MorphOS Chat: message text fixes ---------- */
+
+/* Assistant + system messages */
+.morphos-chat [data-slot="message"],
+.morphos-chat .tambo-message,
+.morphos-chat .message {
+  color: #FFFFFF !important;
+}
+
+/* Paragraphs inside messages */
+.morphos-chat [data-slot="message"] p {
+  color: #FFFFFF !important;
+}
+
+/* Muted / secondary text inside messages */
+.morphos-chat [data-slot="message"] .text-muted-foreground,
+.morphos-chat [data-slot="message"] .text-slate-500,
+.morphos-chat [data-slot="message"] .text-gray-500 {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+/* Links inside assistant messages */
+.morphos-chat [data-slot="message"] a {
+  color: rgba(147, 197, 253, 0.95) !important;
+  text-decoration: underline;
+}
+
+/* Code blocks / inline code */
+.morphos-chat [data-slot="message"] code,
+.morphos-chat [data-slot="message"] pre {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }

@@ -12,7 +12,6 @@ import { DataCard, dataCardSchema } from "@/components/ui/card-data";
 import { Graph, graphSchema } from "@/components/tambo/graph";
 import type { TamboComponent } from "@tambo-ai/react";
 import { TamboTool } from "@tambo-ai/react";
-import { TaskBoard } from "@/components/morphos/TaskBoard";
 import { KPIGrid } from "@/components/morphos/KPIGrid";
 import { InsightCards } from "@/components/morphos/InsightCards";
 import { DSAProgress } from "@/components/morphos/DSAProgress";

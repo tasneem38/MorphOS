@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import type { Components } from "react-markdown";
 import { Copy, Check, ExternalLink } from "lucide-react";
 import hljs from "highlight.js";
-import "highlight.js/styles/github.css";
+import "highlight.js/styles/github-dark.css";
 import DOMPurify from "dompurify";
 
 /**
@@ -68,8 +68,8 @@ const CodeHeader = ({
   };
 
   return (
-    <div className="flex items-center justify-between gap-4 rounded-t-md bg-container px-4 py-2 text-sm font-semibold text-primary">
-      <span className="lowercase text-primary">{language}</span>
+    <div className="flex items-center justify-between gap-4 rounded-t-md bg-container px-4 py-2 text-sm font-semibold text-white">
+      <span className="lowercase text-white/50">{language}</span>
       <button
         onClick={copyToClipboard}
         className="p-1 rounded-md hover:bg-backdrop transition-colors cursor-pointer"
@@ -98,8 +98,13 @@ export const createMarkdownComponents = (): Components => ({
 
     const highlighted = React.useMemo(() => {
       if (!match || !looksLikeCode(deferredContent)) return null;
+      const lang = match[1];
       try {
-        return hljs.highlight(deferredContent, { language: match[1] }).value;
+        if (hljs.getLanguage(lang)) {
+          return hljs.highlight(deferredContent, { language: lang }).value;
+        }
+        // Fallback to auto detection if language is not specifically supported
+        return hljs.highlightAuto(deferredContent).value;
       } catch {
         return deferredContent;
       }
@@ -215,7 +220,7 @@ export const createMarkdownComponents = (): Components => ({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-primary font-medium px-1.5 py-0.5 rounded-md bg-primary/5 hover:bg-primary/10 hover:underline transition-colors inline-flex items-center gap-1.5"
+      className="text-white font-medium px-1.5 py-0.5 rounded-md bg-white/5 hover:bg-white/10 hover:underline transition-colors inline-flex items-center gap-1.5"
     >
       {children}
       <ExternalLink className="w-3 h-3" />

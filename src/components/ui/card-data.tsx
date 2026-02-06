@@ -88,39 +88,39 @@ export const DataCard = React.forwardRef<HTMLDivElement, DataCardProps>(
     return (
       <div ref={ref} className={cn("w-full", className)} {...props}>
         {title && (
-          <h2 className="text-lg font-medium text-gray-700 mb-3">{title}</h2>
+          <h2 className="text-lg font-medium text-white/90 mb-3 tracking-tight">{title}</h2>
         )}
 
         <div className="space-y-2">
           {options?.map((card) => (
             <div
               key={card.id}
-              className="border-b border-gray-100 pb-2 last:border-0"
+              className="border-b border-white/5 pb-2 last:border-0"
             >
               <div
                 className={cn(
-                  "group flex items-start p-1.5 rounded-md transition-colors",
+                  "group flex items-start p-2 rounded-xl transition-all duration-200 hover:bg-white/5",
                   state &&
-                    state.selectedValues.includes(card.value) &&
-                    "bg-gray-50"
+                  state.selectedValues.includes(card.value) &&
+                  "bg-white/10"
                 )}
               >
                 <div
-                  className="flex-shrink-0 mr-3 mt-0.5 cursor-pointer"
+                  className="flex-shrink-0 mr-4 mt-1 cursor-pointer"
                   onClick={() => handleToggleCard(card.value)}
                 >
                   <div
                     className={cn(
-                      "w-4 h-4 border rounded-sm flex items-center justify-center transition-colors",
+                      "w-4 h-4 border rounded shadow-sm flex items-center justify-center transition-all",
                       state && state.selectedValues.includes(card.value)
-                        ? "bg-blue-500 border-blue-500 text-white"
-                        : "border-gray-200 hover:border-gray-300"
+                        ? "bg-emerald-500 border-emerald-500 text-black"
+                        : "border-white/20 group-hover:border-white/40"
                     )}
                   >
                     {state && state.selectedValues.includes(card.value) && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-2.5 w-2.5"
+                        className="h-3 w-3"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -143,22 +143,22 @@ export const DataCard = React.forwardRef<HTMLDivElement, DataCardProps>(
                 >
                   <h3
                     className={cn(
-                      "text-blue-600 font-medium text-sm",
-                      "group-hover:text-blue-700",
+                      "text-emerald-400 font-semibold text-sm transition-colors",
+                      "group-hover:text-emerald-300",
                       state &&
-                        state.selectedValues.includes(card.value) &&
-                        "text-blue-700"
+                      state.selectedValues.includes(card.value) &&
+                      "text-emerald-200"
                     )}
                   >
                     {card.label}
                   </h3>
                   {card.description && (
-                    <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                    <p className="text-xs text-white mt-1 leading-relaxed">
                       {card.description}
                     </p>
                   )}
                   {card.url && (
-                    <span className="text-xs text-green-600 mt-1 block truncate opacity-80">
+                    <span className="text-xs text-cyan-400 mt-1.5 block truncate opacity-70 group-hover:opacity-100">
                       {card.url}
                     </span>
                   )}
